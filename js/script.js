@@ -135,7 +135,19 @@ addressInput.addEventListener('input', (e) => {
 checkoutBtn.addEventListener('click', () => {
     const isOpen = checkRestaurantOpen()
     if (!isOpen) {
-        alert('RESTAURANTE FECHADO NO MOMENTO!')
+
+        Toastify({
+            text: 'Ops o restaurante está fechado!',
+            duration: 3000,
+            close: true,
+            gravity: 'top',
+            position: 'right',
+            stopOnFocus: true,
+            style: {
+                background: '#ef4444'
+            }
+        }).showToast()
+        
         return
     }
 
@@ -157,6 +169,9 @@ checkoutBtn.addEventListener('click', () => {
     const phone = '985442354'
 
     window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, '_blank')
+
+    cart = []
+    updateCartModal()
 })
 
 // Verificar a hora e manipular o card horario 
