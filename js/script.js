@@ -147,6 +147,16 @@ checkoutBtn.addEventListener('click', () => {
     }
 
     // Enviar pedido para api whats
+    const cartItems = cart.map((item) => {
+        return (
+            ` ${item.name} Quantidade: (${item.quantity}) Preço: R$ ${item.price} |`
+        )
+    }).join('')
+
+    const message = encodeURIComponent(cartItems)
+    const phone = '985442354'
+
+    window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, '_blank')
 })
 
 // Verificar a hora e manipular o card horario 
