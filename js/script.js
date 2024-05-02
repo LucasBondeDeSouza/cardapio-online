@@ -81,6 +81,7 @@ function updateCartModal() {
                     Remover
                 </button>
             </div>
+            <hr />
         `
 
         total += item.price * item.quantity
