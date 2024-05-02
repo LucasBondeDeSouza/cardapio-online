@@ -8,6 +8,7 @@ const closeModalBtn = document.getElementById('close-modal-btn')
 const cartCounter = document.getElementById('cart-count')
 const addressInput = document.getElementById('address')
 const addressWarn = document.getElementById('address-warn')
+const footer = document.querySelector('footer')
 
 let cart = []
 
@@ -76,7 +77,7 @@ function updateCartModal() {
                     <p class='font-medium mt-2'>R$ ${item.price.toFixed(2)}</p>
                 </div>
 
-                <button class='remove-from-cart-btn' data-name='${item.name}'>
+                <button class='remove-from-cart-btn text-red-500' data-name='${item.name}'>
                     Remover
                 </button>
             </div>
@@ -93,6 +94,14 @@ function updateCartModal() {
     })
 
     cartCounter.innerHTML = cart.length
+
+    if (cart.length >= 1) {
+        footer.classList.remove('bg-red-500')
+        footer.classList.add('bg-green-500')
+    } else {
+        footer.classList.remove('bg-green-500')
+        footer.classList.add('bg-red-500')
+    }
 }
 
 // Função para remover o item do carrinho
@@ -103,7 +112,6 @@ cartItemsContainer.addEventListener('click', (e) => {
         removeItemCart(name)
     }
 })
-
 function removeItemCart(name) {
     const index = cart.findIndex(item => item.name === name)
 
